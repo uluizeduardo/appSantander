@@ -1,6 +1,8 @@
 package com.project.appSantander.controller;
 
 import com.project.appSantander.model.dto.StockDTO;
+import com.project.appSantander.service.StockService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +17,14 @@ import java.util.List;
 @RequestMapping(value = "/stock")
 public class StockController {
 
+    //Conexão com o service
+    @Autowired
+    private StockService service;
+
     //Inserir/salvar dados (Save)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StockDTO> save(@Valid @RequestBody StockDTO dto){
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(service.save(dto));
     }
 
     //Alteração dos dados (update)

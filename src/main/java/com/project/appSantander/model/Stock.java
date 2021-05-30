@@ -9,6 +9,7 @@ import java.time.LocalDate;
 //Entidade criada para trabalhar com o banco de dados
 public class Stock {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
